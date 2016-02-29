@@ -1,0 +1,18 @@
+tasks.vtl
+
+<div class="jumbotron">
+  <h1>Task Manager!</h1>
+    </div>
+
+      <h3>All Tasks</h3>
+
+#if ($allTasks)
+  <ul>
+    #foreach($task in $allTasks)
+      <li><a href="tasks/$task.getId()">$task.getDescription()</a></li>
+  #end
+  </ul>
+#end
+
+View <a href="/categories">Categories</a>
+Return to <a href="/">Main page</a>

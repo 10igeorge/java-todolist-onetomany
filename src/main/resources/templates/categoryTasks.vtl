@@ -1,0 +1,26 @@
+<h4>Task #task.getId()</h4>
+
+<p>$task.getDescription()</p>
+
+
+  #foreach ($category in $categories)
+    <li><a href="/categories/$category.getId()">$category.getName()</a></li><br />
+    <hr />
+  #end
+<!-- <hr />
+<form action="/categories/$category.getId()" method="post">
+  <div class="form-group">
+    <label for="newTask">New Task</label>
+    <input class="form-control" type="text" name="newTask" id="newTask">
+  </div>
+  <div class="form-group">
+    <label for="taskDueDate">Due Date</label>
+    <input class="form-control" type="datetime-local" name="taskDueDate" id="taskDueDate">
+  </div>
+  <button type="submit" class="btn btn-default" id="addTask">
+    Add Task
+  </button>
+</form> -->
+
+<a href="/categories">Manage Categories</a>
+<a href="/priority">See Top 5 Tasks</a>

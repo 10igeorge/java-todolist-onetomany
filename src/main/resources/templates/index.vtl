@@ -1,0 +1,27 @@
+index.vtl
+
+<div class="jumbotron">
+<h1>Task Manager!</h1>
+</div>
+<h2><a href="/categories">Manage Categories</a></h2>
+<h2><a href="/tasks">Manage Tasks</a></h2>
+
+<form action="/categories" method="post">
+  <div class="form-group">
+    <label for="newCategory">Category</label>
+    <input class="form-control" type="text" name="newCategory" id="newCategory">
+  </div>
+  <button type="submit" class="btn btn-default">
+    Add Category
+  </button>
+</form>
+
+<form action="/tasks" method="post">
+  <div class="form-group">
+    <label for="newTasks">Tasks</label>
+    <input class="form-control" type="text" name="newTasks" id="newTasks">
+  </div>
+  <button type="submit" class="btn btn-default">
+    Add Task
+  </button>
+</form>

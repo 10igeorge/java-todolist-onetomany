@@ -1,0 +1,15 @@
+categories.vtl
+
+<h3>Categories List</h3>
+
+#if ($allCategories)
+
+  <ul>
+    #foreach($category in $allCategories)
+      <li><a href="categories/$category.getId()">$category.getName()</a></li>
+    #end
+  </ul>
+
+#end
+
+<a href="/priority">See Top 5 Tasks</a>
