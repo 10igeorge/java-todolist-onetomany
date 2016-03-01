@@ -53,7 +53,6 @@ public class Task {
       String sql = "INSERT INTO tasks (description) VALUES (:description)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("description", this.description)
-        // .addParameter("duedate", this.dueDate)
         .executeUpdate()
         .getKey();
     }

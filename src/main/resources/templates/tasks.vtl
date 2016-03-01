@@ -6,13 +6,21 @@ tasks.vtl
 
       <h3>All Tasks</h3>
 
-#if ($allTasks)
+#if ($tasks)
   <ul>
-    #foreach($task in $allTasks)
-      <li><a href="tasks/$task.getId()">$task.getDescription()</a></li>
+  #foreach ($task in $tasks)
+    <li><a href="tasks/$task.getId()">$task.getDescription()</a></li>
   #end
   </ul>
 #end
+<br>
+<form action="/tasks" method="post">
+  <label for="description">Task Description</label><br>
+  <input id="description" name="description" type="text"><br><br>
+
+  <button type="submit">Add task</button>
+</form>
+<br><br>
 
 View <a href="/categories">Categories</a>
 Return to <a href="/">Main page</a>

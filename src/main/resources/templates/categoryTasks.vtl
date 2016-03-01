@@ -1,26 +1,28 @@
-<h4>Task #task.getId()</h4>
+<h1>$category.getName()</h1>
 
-<p>$task.getDescription()</p>
+#if($category.getTasks())
+  <p>Here are the tasks for this category:</p>
+  <ul>
+    #foreach($task in $category.getTasks())
+      <li>$task.getDescription()</li>
+    #end
+  </ul>
+#end
 
+<h4>Add a task to this category:</h4>
 
-  #foreach ($category in $categories)
-    <li><a href="/categories/$category.getId()">$category.getName()</a></li><br />
-    <hr />
-  #end
-<!-- <hr />
-<form action="/categories/$category.getId()" method="post">
-  <div class="form-group">
-    <label for="newTask">New Task</label>
-    <input class="form-control" type="text" name="newTask" id="newTask">
-  </div>
-  <div class="form-group">
-    <label for="taskDueDate">Due Date</label>
-    <input class="form-control" type="datetime-local" name="taskDueDate" id="taskDueDate">
-  </div>
-  <button type="submit" class="btn btn-default" id="addTask">
-    Add Task
-  </button>
-</form> -->
+<form action='/add_tasks' method='post'>
+    <input id="category_id" name="category_id" type="hidden" value="$category.getId()">
+    <label for="task_id">Select a task</label>
+    <select id='task_id' name='task_id' type='text'>
+      #foreach($task in $allTasks)
+        <option value="$task.getId()"> $task.getDescription() </option>
+      #end
+    </select>
+    <button type='submit'>Add task</button>
+</form>
 
-<a href="/categories">Manage Categories</a>
-<a href="/priority">See Top 5 Tasks</a>
+<p><a href="/categories/$category.getId()/edit">Edit this category</a></p>
+
+View <a href="/categories">Categories</a>
+Return to <a href="/">Main page</a>

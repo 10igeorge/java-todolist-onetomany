@@ -1,40 +1,28 @@
-categoryTasks.vtl
+<h1>$task.getDescription()</h1>
 
-<h3>$category.getName()</h3>
-<h1>$category.getTasks()
-$category.getName()
-$category</h1>
-  <h4>Tasks</h4>
-
-    #if($category.getTasks())
-
-<form action="/categories/delete/$category.getId()" method="post">
-      #foreach ($task in $tasks)
-      $task.getDescription()<br />
-      <!-- Due: $task.getDueDate() -->
-      <input type="checkbox" name="deleteTask" value="$task.getId()" id="$task.getId()">
-      <hr />
-      #end
-      <button type="submit" class="btn btn-default" id="delete">
-        Remove Task
-      </button>
-</form>
-
+#if($task.getCategories())
+  <p>Here are the categories for this task:</p>
+  <ul>
+    #foreach($category in $task.getCategories())
+      <li>$category.getName()</li>
     #end
-<hr />
-<form action="/categories/$category.getId()" method="post">
-  <div class="form-group">
-    <label for="newTask">New Task</label>
-    <input class="form-control" type="text" name="newTask" id="newTask">
-  </div>
-  <div class="form-group">
-    <label for="taskDueDate">Due Date</label>
-    <input class="form-control" type="datetime-local" name="taskDueDate" id="taskDueDate">
-  </div>
-  <button type="submit" class="btn btn-default" id="addTask">
-    Add Task
-  </button>
+  </ul>
+#end
+
+<h4>Add a category to this task:</h4>
+
+<form action='/add_categories' method='post'>
+    <input id="task_id" name="task_id" type="hidden" value="$task.getId()">
+    <label for="category_id">Select a category</label>
+    <select id='category_id' name='category_id' type='text'>
+      #foreach($category in $allCategories)
+        <option value="$category.getId()"> $category.getName() </option>
+      #end
+    </select>
+    <button type='submit'>Add category</button>
 </form>
 
-<a href="/categories">Manage Categories</a>
-<a href="/priority">See Top 5 Tasks</a>
+<p><a href="/tasks/$task.getId()/edit">Edit this task</a></p>
+
+View <a href="/categories">Categories</a>
+Return to <a href="/">Main page</a>
